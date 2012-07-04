@@ -1,0 +1,77 @@
+﻿<Window x:Class="SkeletalTracking.Puzzle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="990" Loaded="Window_Loaded" 
+        xmlns:Controls="clr-namespace:Coding4Fun.Kinect.Wpf.Controls;assembly=Coding4Fun.Kinect.Wpf"
+        xmlns:my="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers" 
+        Closing="Window_Closing" >
+    <Grid x:Name="theGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="650*" />
+            <ColumnDefinition Width="320*" />
+            <ColumnDefinition Width="0*" />
+        </Grid.ColumnDefinitions>
+        <Canvas Background="Transparent" Height="575" VerticalAlignment="Top" Grid.ColumnSpan="2" Name="canvasPrincipal" Margin="0,-9,0,0">
+
+            <Image Canvas.Left="150" Canvas.Top="50" Height="425" Name="logoNoir" Stretch="Fill" Width="675" Source="/SkeletalTracking;component/Resources/LogoNoir.png" />
+            
+            <Image Canvas.Left="313" Canvas.Top="336" Height="131" Name="libertePosition" Stretch="Fill" Width="355" Source="/SkeletalTracking;component/Resources/Liberté.png" Visibility="Visible" />
+            <Image Canvas.Left="350" Canvas.Top="228" Height="196" Name="audacePosition" Stretch="Fill" Width="284" Source="/SkeletalTracking;component/Resources/Audace.png" Visibility="Visible" />
+            <Image Canvas.Left="400" Canvas.Top="55" Height="228" Name="confiancePosition" Stretch="Fill" Width="199" Source="/SkeletalTracking;component/Resources/Confiance.png" Visibility="Visible" />
+            <Image Canvas.Left="154" Canvas.Top="131" Height="165" Name="solidaritePosition" Stretch="Fill" Width="282" Source="/SkeletalTracking;component/Resources/Solidarité.png" Visibility="Visible" />
+            <Image Canvas.Left="532" Canvas.Top="131" Height="152" Name="honnetetePosition" Stretch="Fill" Width="286" Source="/SkeletalTracking;component/Resources/Honnêteté.png" Visibility="Visible" />
+            <Image Canvas.Left="149" Canvas.Top="216" Height="206" Name="plaisirPosition" Stretch="Fill" Width="249" Source="/SkeletalTracking;component/Resources/Plaisir.png" Visibility="Visible" />
+            <Image Canvas.Left="591" Canvas.Top="235" Height="188" Name="simplicitePosition" Stretch="Fill" Width="232" Source="/SkeletalTracking;component/Resources/Simplicité.png" Visibility="Visible" />
+
+            <Image Canvas.Left="550" Canvas.Top="100" Height="131" Name="liberte" Stretch="Fill" Width="355" Source="/SkeletalTracking;component/Resources/Liberté.png" Opacity="0.75" Visibility="Hidden" />
+            <Image Canvas.Left="550" Canvas.Top="100" Height="196" Name="audace" Stretch="Fill" Width="284" Source="/SkeletalTracking;component/Resources/Audace.png" Opacity="0.75" Visibility="Hidden" />
+            <Image Canvas.Left="550" Canvas.Top="100" Height="228" Name="confiance" Stretch="Fill" Width="199" Source="/SkeletalTracking;component/Resources/Confiance.png" Opacity="0.75" Visibility="Hidden" />
+            <Image Canvas.Left="550" Canvas.Top="100" Height="152" Name="honnetete" Stretch="Fill" Width="286" Source="/SkeletalTracking;component/Resources/Honnêteté.png" Opacity="0.75" Visibility="Hidden" />
+            <Image Canvas.Left="550" Canvas.Top="100" Height="206" Name="plaisir" Stretch="Fill" Width="249" Source="/SkeletalTracking;component/Resources/Plaisir.png" Opacity="0.75" Visibility="Hidden" />
+            <Image Canvas.Left="550" Canvas.Top="100" Height="188" Name="simplicite" Stretch="Fill" Width="232" Source="/SkeletalTracking;component/Resources/Simplicité.png" Opacity="0.75" Visibility="Hidden" />
+            <Image Canvas.Left="550" Canvas.Top="100" Height="165" Name="solidarite" Stretch="Fill" Width="282" Source="/SkeletalTracking;component/Resources/Solidarité.png" Opacity="0.75" Visibility="Hidden" />
+
+            <Ellipse Height="80" Width="80" Name="Head" Canvas.Left="495" Canvas.Top="20" Fill="Red" Visibility="Hidden" />
+            <Ellipse Height="80" Width="80" Name="RightHand" Canvas.Left="689" Canvas.Top="6">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/SkeletalTracking;component/Resources/hand.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Height="80" Width="80" Name="LeftHand" Canvas.Left="600" Canvas.Top="6" FlowDirection="RightToLeft">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/SkeletalTracking;component/Resources/hand.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            
+            <Ellipse Canvas.Left="25" Canvas.Top="248" Height="80" Name="selectBtn" Stroke="Black" Width="80" Fill="DarkRed" />
+            <Label Canvas.Left="20" Canvas.Top="270" Content="Mélanger" Height="35" Name="replay" Width="107" IsEnabled="False" FontSize="18" FontWeight="Black" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFF5ECEC" Visibility="Visible" />
+
+            <Label Canvas.Left="10" Canvas.Top="510" Content="ALM MDR " Height="51" Name="label2" FontSize="24" FontWeight="Medium" Width="122" />
+            <Label Canvas.Left="128" Canvas.Top="510" Content="Pour une performance sans frontière" Height="46" Name="label1" Width="417" FontSize="24" FontWeight="Medium" Foreground="#FFFF6100" ForceCursor="False" />
+            
+
+            <Slider Canvas.Left="772" Canvas.Top="495" Height="29" Name="slider1" Width="148" Maximum="27" Minimum="-27" ValueChanged="slider1_ValueChanged" />
+            <Label Canvas.Left="926" Canvas.Top="492" Content="0" Height="32" Name="Degree" Width="30" />
+            <Button Canvas.Left="772" Canvas.Top="530" Content="Adjust Kinect Angle" Height="31" Name="btnangle" Width="190" Click="btnangle_Click" />
+
+            <Label Canvas.Left="820" Canvas.Top="0" Content="00:00:00" Height="50" Name="chrono" Width="142" FontWeight="Bold" FontSize="32" />
+            <Canvas Left="193" Top="60" Height="65" Name="canvasLoader" Width="65">
+                <Image Height="65" Width="65" Name="loader0" Source="/SkeletalTracking;component/Resources/Loader/loader0.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader1" Source="/SkeletalTracking;component/Resources/Loader/loader1.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader2" Source="/SkeletalTracking;component/Resources/Loader/loader2.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader3" Source="/SkeletalTracking;component/Resources/Loader/loader3.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader4" Source="/SkeletalTracking;component/Resources/Loader/loader4.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader5" Source="/SkeletalTracking;component/Resources/Loader/loader5.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader6" Source="/SkeletalTracking;component/Resources/Loader/loader6.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader7" Source="/SkeletalTracking;component/Resources/Loader/loader7.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader8" Source="/SkeletalTracking;component/Resources/Loader/loader8.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader9" Source="/SkeletalTracking;component/Resources/Loader/loader9.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader10" Source="/SkeletalTracking;component/Resources/Loader/loader10.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader11" Source="/SkeletalTracking;component/Resources/Loader/loader11.png" Visibility="Hidden" />
+                <Image Height="65" Width="65" Name="loader12" Source="/SkeletalTracking;component/Resources/Loader/loader12.png" Visibility="Hidden" />
+            </Canvas>
+            <Image Canvas.Left="25" Canvas.Top="25" Height="80" Name="exitBtn" Stretch="Fill" Width="80" Source="/SkeletalTracking;component/Resources/exit.png" />
+            <my:KinectSensorChooser Canvas.Left="149" Canvas.Top="174" Name="kinectSensorChooser1" Width="693" Height="211" />
+        </Canvas>
+    </Grid>
+</Window>

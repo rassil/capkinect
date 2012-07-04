@@ -1,0 +1,36 @@
+﻿<Window x:Class="SkeletalTracking.WindowPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="600" Width="990" Loaded="Window_Loaded"
+        xmlns:my="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
+        Closing="Window_Closing" >
+    <Grid>
+        <Canvas Background="Transparent" Height="575" VerticalAlignment="Top" Name="canvasPrincipal" Margin="0,-9,0,0">
+            <Image Canvas.Left="168" Canvas.Top="72" Height="188" Name="image1" Stretch="Fill" Width="244" Source="/SkeletalTracking;component/Resources/LogoComplet.png" />
+            <Image Canvas.Left="607" Canvas.Top="132" Height="188" Name="image2" Source="/SkeletalTracking;component/Resources/capgemini_logo.png" Stretch="Fill" Width="276" />
+            
+            <Canvas Left="42" Top="109" Height="50" Name="canvasLoader" Width="50">
+                <Image Height="50" Width="50" Name="loader0" Source="/SkeletalTracking;component/Resources/Loader/loader0.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader1" Source="/SkeletalTracking;component/Resources/Loader/loader1.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader2" Source="/SkeletalTracking;component/Resources/Loader/loader2.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader3" Source="/SkeletalTracking;component/Resources/Loader/loader3.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader4" Source="/SkeletalTracking;component/Resources/Loader/loader4.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader5" Source="/SkeletalTracking;component/Resources/Loader/loader5.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader6" Source="/SkeletalTracking;component/Resources/Loader/loader6.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader7" Source="/SkeletalTracking;component/Resources/Loader/loader7.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader8" Source="/SkeletalTracking;component/Resources/Loader/loader8.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader9" Source="/SkeletalTracking;component/Resources/Loader/loader9.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader10" Source="/SkeletalTracking;component/Resources/Loader/loader10.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader11" Source="/SkeletalTracking;component/Resources/Loader/loader11.png" Visibility="Hidden" />
+                <Image Height="50" Width="50" Name="loader12" Source="/SkeletalTracking;component/Resources/Loader/loader12.png" Visibility="Hidden" />
+            </Canvas>
+            <Ellipse Height="80" Width="80" Name="RightHand" Canvas.Left="689" Canvas.Top="6">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/SkeletalTracking;component/Resources/hand.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <my:KinectSensorChooser HorizontalAlignment="Left" Margin="12,326,0,0" Name="kinectSensorChooserPrincipal" VerticalAlignment="Top" Width="944" />
+            
+        </Canvas>
+    </Grid>
+</Window>
